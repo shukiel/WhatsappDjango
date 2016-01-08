@@ -1,0 +1,30 @@
+body
+{
+    color: black;
+    font-size:20pt;
+    background: white url("background.jpg") no-repeat right bottom;
+    margin: 20px;
+}
+
+h1
+{
+     background-color : rgba(255,200,20,0.3);
+}
+footer {
+    clear: both;
+    background-color : rgba(0,127,255,0.2);
+    position:fixed;
+    bottom: 40pt;
+}
+
+form
+{
+    font-size: 10pt;
+    background-color : rgba(128,0,255,0.1);
+}
+
+table, th, td {
+
+    font-size: 20pt;
+     border: 2px solid black;
+}
