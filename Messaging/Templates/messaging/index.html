@@ -5,8 +5,14 @@
     <title>{% block header %}{{ block.super }}::More Crap{% endblock %}</title>
 </head>
 {% block content %}
-    <div id = "body"></div>
-        <a href = "{% url 'messaging:login' %}" > Login </a>
+{% if cur_usr.is_authenticated  %}
+      <div id = "body"></div>
+            <a href = "{% url 'messaging:logout' %}" > Logout </a>
     </div>
+{% else %}
+        <div id = "body"></div>
+            <a href = "{% url 'messaging:login' %}" > Login </a>
+        </div>
+{% endif %}
 {% endblock %}
 </html>
