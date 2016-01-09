@@ -4,7 +4,10 @@
 <head>
     <title>{% block header %}{{ block.super }}::More Crap{% endblock %}</title>
 </head>
-<body>
-
-</body>
+{% block content %}
+    <div id = "body"></div>
+        <a href = {% url 'messaging:index' %} >Login</a>
+        <a href = {% url 'messaging:
+    </div>
+{% endblock %}
 </html>
