@@ -15,7 +15,7 @@
     {% endif %}
 {% endif %}
 
-<form method="post" >
+<form action = "{% url 'messaging:message' %}" method="post">
 {% csrf_token %}
 <table>
 <tr>

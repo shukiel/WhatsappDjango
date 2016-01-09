@@ -6,8 +6,7 @@
 </head>
 {% block content %}
     <div id = "body"></div>
-        <a href = {% url 'messaging:index' %} >Login</a>
-        <a href = {% url 'messaging:
+        <a href = "{% url 'messaging:login' %}" > Login </a>
     </div>
 {% endblock %}
 </html>

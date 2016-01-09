@@ -17,7 +17,3 @@ class Message (models.Model):
         if len(self.message_text.__str__()) > MAX_CHARS_TO_SHOW_IN_TITLE:
             return res
         return res + ' : ' + self.message_text.__str__()
-
-
-
-
