@@ -1,18 +1,40 @@
 {% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>{% block header %}{{ block.super }}::More Crap{% endblock %}</title>
-</head>
-{% block content %}
-{% if cur_usr.is_authenticated  %}
-      <div id = "body"></div>
-            <a href = "{% url 'messaging:logout' %}" > Logout </a>
-    </div>
-{% else %}
-        <div id = "body"></div>
-            <a href = "{% url 'messaging:login' %}" > Login </a>
-        </div>
-{% endif %}
-{% endblock %}
+    <head>
+        <title>{% block header %}{{ block.super }}:: Main Page :: {{cur_usr.username}}{% endblock %}</title>
+    </head>
+    {% block title %}
+    {{block.super}} ::->:: {{cur_usr.username}}
+    {% endblock %}
+    {% block content %}
+        {% if cur_usr.is_authenticated  %}  <!-- USER IS AUTHENTICATED -->
+            <h3>
+                <a href = "logout" > Logout </a>
+            </h3>
+            <strong><u>Contact List</u></strong>
+            <br><br>
+            <lu>
+             {% for x in all_usr %}
+                    {% if x != cur_usr %}
+                        <li><a href="/whatsapp/{{ x.id }}">{{ x.username }} </a></li>
+                    {% endif %}
+             {% endfor %}
+            </lu>
+        {% else %}                          <!-- USER IS NOT AUTHENTICATED-->
+            <h3>
+                --:
+                <a href = "login" > Login </a>
+                /\/\/\
+                <a href = "register">Sign up</a>
+                :--
+            </h3>
+
+            <ul>
+                {% for contact in all_usrs %}
+                    <li><a href="{% url 'messaging : message' contact.id %}">{{contact}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}
 </html>

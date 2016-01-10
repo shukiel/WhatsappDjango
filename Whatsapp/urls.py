@@ -21,5 +21,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^whatsapp/', include('Messaging.urls', namespace='messaging')),
+    url(r'^whatsapp/', include('Messaging.urls' ,namespace='messaging'), name="root"),
 ]

@@ -2,9 +2,24 @@
 {% extends "base.html" %}
 
 <html lang="en">
-{% block header %}{{ block.super }}':: '{{ user.name }}{% endblock %}
+{% block header %}{{ block.super }} :: {{ to_usr.username }}{% endblock %}
+{% block title %}
+    {{ block.super }}  -->> Message {{to_usr.username}}
+{% endblock %}
 
 {% block content %}
-{{cur_usr.id}}
+    <ul>
+    {% for msg in all_msg %}
+        <li>{{msg.time_created}} - {{msg.message_from}}:<ul style="list-style-type:none"><li>{{msg.message_text}}</li></ul></li>
+    {% endfor %}
+    </ul>
+    {% if not all_msg %}
+        <b> No Messages from this dude :( </b> <br>
+    {% endif %}
+
+    <form method="post" action="/whatsapp/{{ to_usr.id }}/">
+    {% csrf_token %}
+        <textarea type="text" id = "message" name="message" cols = "128" rows = "2" maxlength="254"></textarea>
+        <input type="submit" value="Send!" />
 {% endblock %}
 </html>

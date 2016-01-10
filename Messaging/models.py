@@ -9,8 +9,8 @@ MAX_CHARS_TO_SHOW_IN_TITLE = 20
 class Message (models.Model):
     message_text = models.TextField(max_length=255)
     time_created = models.DateTimeField("TimeCreated", default=now)
-    message_from = models.ForeignKey(User, related_name="message_from")
-    message_to = models.ForeignKey(User, related_name="message_to")
+    message_from = models.ForeignKey (User, related_name="message_from")
+    message_to = models.ForeignKey   (User, related_name="message_to")
 
     def __str__(self):
         res = '' + self.time_created.__str__() + ' - From ' + self.message_from.__str__()
